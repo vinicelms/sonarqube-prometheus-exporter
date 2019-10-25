@@ -62,6 +62,50 @@ class Project:
     def organization(self, value):
         self._organization = value
 
+    def organize_measures(self):
+        for metric in self.metrics['component']['measures']:
+            if 'metric' in metric:
+                m = Metric()
+                for met_tuples in self.transform_object_in_list_tuple(metric['metric']):
+                    if met_tuples[0] == 'metric':
+                        m.key = met_tuples[0]
+                    else:
+                        m.values = met_tuples
+                self.metrics = m
+
+    def transform_object_in_list_tuple(self, metric_object):
+        object_list_tuples = []
+        if isinstance(metric_object, list):
+            for obj in metric_object:
+                object_list_tuples.append(self.transform_object_in_list_tuple(metric_object=obj))
+        else:
+            for item in metric_object:
+                obj_tuple = (item, metric_object['item'])
+                object_list_tuples.append(obj_tuple)
+        return object_list_tuples
+
+class Metric:
+
+    def __init__(self):
+        self._key = None
+        self._values = None
+
+    @property
+    def key(self):
+        return self._key
+
+    @key.setter
+    def key(self, value):
+        self._key = value
+
+    @property
+    def values(self):
+        self._values
+
+    @values.setter
+    def values(self, value):
+        self._values.append(value)
+
 def get_all_metrics():
     projects = []
     metrics = []
