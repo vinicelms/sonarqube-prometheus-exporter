@@ -3,4 +3,4 @@ from sonarqube_exporter import get_all_metrics
 
 class Metrics(Resource):
     def get(self):
-        return get_all_metrics()
+        get_all_metrics()
