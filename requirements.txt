@@ -12,6 +12,7 @@ Jinja2==2.10.3
 lazy-object-proxy==1.4.2
 MarkupSafe==1.1.1
 mccabe==0.6.1
+prometheus-client==0.7.1
 pylint==2.4.3
 pytz==2019.3
 requests==2.22.0
