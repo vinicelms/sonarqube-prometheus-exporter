@@ -132,10 +132,7 @@ def get_all_metrics():
         p.name = project['name']
         p.organization = project['organization']
         p.metrics = client.get_measures_component(component_key=p.key, metric_key=metrics_comma_separated)
+        p.organize_measures()
         projects.append(p)
-
-    for project in projects:
-        project.organize_measures()
-        content.append(project.metrics)
 
     return content
