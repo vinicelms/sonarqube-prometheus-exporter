@@ -75,12 +75,12 @@ class Project:
 
     def transform_object_in_list_tuple(self, metric_object):
         object_list_tuples = []
-        if isinstance(metric_object, list):
-            for obj in metric_object:
-                object_list_tuples.append(self.transform_object_in_list_tuple(metric_object=obj))
-        else:
-            for item in metric_object:
-                obj_tuple = (item, metric_object[item])
+        for item in metric_object:
+            if isinstance(metric_object[item], list):
+                for obj in metric_object[item]:
+                    object_list_tuples.append(self.transform_object_in_list_tuple(metric_object=obj))
+            else:
+                obj_tuple = (str(item), str(metric_object[item]))
                 object_list_tuples.append(obj_tuple)
         return object_list_tuples
 
