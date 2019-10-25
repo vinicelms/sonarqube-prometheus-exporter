@@ -69,7 +69,7 @@ class Project:
                 m = Metric()
                 for met_tuples in self.transform_object_in_list_tuple(metric):
                     if met_tuples[0] == 'metric':
-                        m.key = met_tuples[0]
+                        m.key = met_tuples[1]
                     else:
                         m.values = met_tuples
                 metric_obj_list.append(m)
