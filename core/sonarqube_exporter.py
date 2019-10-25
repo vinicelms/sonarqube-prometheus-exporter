@@ -110,10 +110,9 @@ class Metric:
     def values(self, value):
         self._values.extend(value)
 
-def get_all_metrics():
+def get_all_projects_with_metrics():
     projects = []
     metrics = []
-    content = []
 
     client = SonarExporter(CONF.sonar_user, CONF.sonar_password)
     all_projects = client.get_all_projects()
@@ -135,4 +134,4 @@ def get_all_metrics():
         p.organize_measures()
         projects.append(p)
 
-    return content
+    return projects
