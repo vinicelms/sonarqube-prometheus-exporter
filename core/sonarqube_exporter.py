@@ -88,7 +88,7 @@ class Metric:
 
     def __init__(self):
         self._key = None
-        self._values = None
+        self._values = []
 
     @property
     def key(self):
@@ -104,7 +104,7 @@ class Metric:
 
     @values.setter
     def values(self, value):
-        self._values.append(value)
+        self._values.extend(value)
 
 def get_all_metrics():
     projects = []
