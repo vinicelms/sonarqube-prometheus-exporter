@@ -63,6 +63,7 @@ class Project:
         self._organization = value
 
     def organize_measures(self):
+        metric_obj_list = []
         for metric in self.metrics['component']['measures']:
             if 'metric' in metric:
                 m = Metric()
@@ -71,7 +72,8 @@ class Project:
                         m.key = met_tuples[0]
                     else:
                         m.values = met_tuples
-                self.metrics = m
+                metric_obj_list.append(m)
+        self.metrics = metric_obj_list
 
     def transform_object_in_list_tuple(self, metric_object):
         object_list_tuples = []
