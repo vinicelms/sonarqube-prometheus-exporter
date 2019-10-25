@@ -66,7 +66,7 @@ class Project:
         for metric in self.metrics['component']['measures']:
             if 'metric' in metric:
                 m = Metric()
-                for met_tuples in self.transform_object_in_list_tuple(metric['metric']):
+                for met_tuples in self.transform_object_in_list_tuple(metric):
                     if met_tuples[0] == 'metric':
                         m.key = met_tuples[0]
                     else:
