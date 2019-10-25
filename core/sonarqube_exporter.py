@@ -131,6 +131,7 @@ def get_all_metrics():
         projects.append(p)
 
     for project in projects:
+        project.organize_measures()
         content.append(project.metrics)
 
     return content
