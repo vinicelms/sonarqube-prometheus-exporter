@@ -80,7 +80,7 @@ class Project:
                 object_list_tuples.append(self.transform_object_in_list_tuple(metric_object=obj))
         else:
             for item in metric_object:
-                obj_tuple = (item, metric_object['item'])
+                obj_tuple = (item, metric_object[item])
                 object_list_tuples.append(obj_tuple)
         return object_list_tuples
 
