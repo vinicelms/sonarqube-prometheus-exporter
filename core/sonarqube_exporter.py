@@ -67,12 +67,14 @@ class Project:
         for metric in self.metrics['component']['measures']:
             if 'metric' in metric:
                 m = Metric()
+                tuple_list = []
                 for met_tuples in self.transform_object_in_list_tuple(metric):
                     if met_tuples[0] == 'metric':
                         m.key = met_tuples[1]
                     else:
-                        m.values = met_tuples
-                metric_obj_list.append(m)
+                        tuple_list.append(met_tuples)
+                m.values = tuple_list
+            metric_obj_list.append(m)
         self.metrics = metric_obj_list
 
     def transform_object_in_list_tuple(self, metric_object):
@@ -80,7 +82,7 @@ class Project:
         for item in metric_object:
             if isinstance(metric_object[item], list):
                 for obj in metric_object[item]:
-                    object_list_tuples.append(self.transform_object_in_list_tuple(metric_object=obj))
+                    object_list_tuples.extend(self.transform_object_in_list_tuple(metric_object=obj))
             else:
                 obj_tuple = (str(item), str(metric_object[item]))
                 object_list_tuples.append(obj_tuple)
@@ -102,7 +104,7 @@ class Metric:
 
     @property
     def values(self):
-        self._values
+        return self._values
 
     @values.setter
     def values(self, value):
