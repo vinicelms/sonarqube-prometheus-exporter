@@ -62,12 +62,17 @@ class Project:
     def organization(self, value):
         self._organization = value
 
-    def organize_measures(self):
+    def organize_measures(self, metrics : list):
         metric_obj_list = []
         for metric in self.metrics['component']['measures']:
             if 'metric' in metric:
                 m = Metric()
                 tuple_list = []
+                for metric_obj in metrics:
+                    if metric_obj.key == metric['metric']:
+                        m.key = metric_obj.key
+                        m.description = metric_obj.description
+                        m.domain = metric_obj.domain
                 for met_tuples in self.transform_object_in_list_tuple(metric):
                     if met_tuples[0] == 'metric':
                         m.key = met_tuples[1]
@@ -93,6 +98,8 @@ class Metric:
     def __init__(self):
         self._key = None
         self._values = []
+        self._description = None
+        self._domain = None
 
     @property
     def key(self):
@@ -110,6 +117,22 @@ class Metric:
     def values(self, value):
         self._values.extend(value)
 
+    @property
+    def description(self):
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        self._description = value
+
+    @property
+    def domain(self):
+        return self._domain
+
+    @domain.setter
+    def domain(self, value):
+        self._domain = value
+
 def get_all_projects_with_metrics():
     projects = []
     metrics = []
@@ -119,19 +142,27 @@ def get_all_projects_with_metrics():
     all_metrics = client.get_all_metrics()
 
     for metric in all_metrics['metrics']:
+        m = Metric()
         for item in CONF.supported_keys:
             if 'domain' in metric and metric['domain'] in item['domain']:
                 if 'key' in metric and metric['key'] in item['keys']:
-                    metrics.append(metric['key'])
+                    m.key = metric['key']
+                    m.domain = metric['domain']
+                    if 'description' in metric:
+                        m.description = metric['description']
+                    metrics.append(m)
 
-    metrics_comma_separated = ','.join(metrics)
+    metrics_comma_separated = str()
+    for metric in metrics:
+        if metric.description:
+            metrics_comma_separated = "{},{}".format(metric.key, metrics_comma_separated)
 
     for project in all_projects['components']:
         p = Project(identifier=project['id'], key=project['key'])
         p.name = project['name']
         p.organization = project['organization']
         p.metrics = client.get_measures_component(component_key=p.key, metric_key=metrics_comma_separated)
-        p.organize_measures()
+        p.organize_measures(metrics)
         projects.append(p)
 
     return projects
