@@ -28,52 +28,37 @@ SUPPORTED_KEYS = [
         "domain" : "Reliability",
         "keys" : [
             "bugs",
-            "new_bugs",
             "reliability_rating",
-            "new_reliability_rating",
-            "reliability_remediation_effort",
-            "new_reliability_remediation_effort"
+            "reliability_remediation_effort"
         ]
     },
     {
         "domain" : "Security",
         "keys" : [
-            "new_security_hotspots",
-            "new_vulnerabilities",
             "security_hotspots",
             "security_rating",
-            "new_security_rating",
             "security_remediation_effort",
-            "new_security_remediation_effort",
             "security_review_rating"
         ]
     },
     {
         "domain" : "Maintainability",
         "keys" : [
-            "new_technical_debt",
             "code_smells",
             "development_cost",
             "effort_to_reach_maintainability_rating_a",
-            "Maintainability - sqale_rating"
-            "new_maintainability_rating",
-            "new_code_smells"
+            "sqale_rating",
             "sqale_index",
-            "sqale_debt_ratio",
-            "new_sqale_debt_ratio",
-            # "new_development_cost"
+            "sqale_debt_ratio"
         ]
     },
     {
         "domain" : "Duplications",
         "keys" : [
             "duplicated_blocks",
-            "new_duplicated_blocks",
             "duplicated_files",
             "duplicated_lines",
             "duplicated_lines_density",
-            "new_duplicated_lines",
-            "new_duplicated_lines_density",
             "duplications_data"
         ]
     },
@@ -81,18 +66,17 @@ SUPPORTED_KEYS = [
         "domain" : "Coverage",
         "keys" : [
             "branch_coverage",
-            "new_branch_coverage",
             "conditions_to_cover",
-            "new_conditions_to_cover",
-            "coverage",
-            "new_coverage",
             "executable_lines_data",
             "line_coverage",
-            "new_line_coverage",
             "lines_to_cover",
-            "new_lines_to_cover",
             "skipped_tests",
-            "uncovered_conditions"
+            "uncovered_conditions",
+            "test_failures,tests",
+            "test_errors",
+            "skipped_tests",
+            "test_success_density",
+            "test_execution_time"
         ]
     },
     {
@@ -111,9 +95,19 @@ SUPPORTED_KEYS = [
             "ncloc",
             "ncloc_language_distribution",
             "ncloc_data",
-            "new_lines",
             "projects",
             "statements"
+        ]
+    },
+    {
+        "domain" : "Issues",
+        "keys" : [
+            "violations",
+            "open_issues",
+            "reopened_issues",
+            "confirmed_issues",
+            "false_positive_issues",
+            "wont_fix_issues"
         ]
     }
 ]
