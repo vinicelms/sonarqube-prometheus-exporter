@@ -11,14 +11,14 @@ class CustomSonarExporter:
     def collect(self):
         projects = get_all_projects_with_metrics()
 
-        label_list = ['id', 'key']
-        label_values = []
-        value_to_set = None
-
         for project in projects:
-            label_values.append(project.id)
-            label_values.append(project.key)
             for metric in project.metrics:
+                label_list = ['id', 'key']
+                label_values = []
+                value_to_set = None
+
+                label_values.append(project.id)
+                label_values.append(project.key)
                 for metric_value in metric.values:
                     if metric_value[0] == 'value':
                         value_to_set = metric_value[1]

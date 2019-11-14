@@ -1,0 +1,1170 @@
+{
+    "__inputs": [
+        {
+            "name": "DS_My-Prometheus-Datasource",
+            "label": "My-Prometheus-Datasource",
+            "description": "",
+            "type": "datasource",
+            "pluginId": "prometheus",
+            "pluginName": "Prometheus"
+        }
+    ],
+    "__requires": [
+        {
+            "type": "panel",
+            "id": "gauge",
+            "name": "Gauge",
+            "version": ""
+        },
+        {
+            "type": "grafana",
+            "id": "grafana",
+            "name": "Grafana",
+            "version": "6.4.3"
+        },
+        {
+            "type": "panel",
+            "id": "graph",
+            "name": "Graph",
+            "version": ""
+        },
+        {
+            "type": "datasource",
+            "id": "prometheus",
+            "name": "Prometheus",
+            "version": "1.0.0"
+        }
+    ],
+    "annotations": {
+        "list": [
+            {
+                "builtIn": 1,
+                "datasource": "-- Grafana --",
+                "enable": true,
+                "hide": true,
+                "iconColor": "rgba(0, 211, 255, 1)",
+                "name": "Annotations & Alerts",
+                "type": "dashboard"
+            }
+        ]
+    },
+    "editable": true,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": null,
+    "iteration": 1573764973043,
+    "links": [],
+    "panels": [
+        {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 0
+            },
+            "id": 10,
+            "panels": [],
+            "title": "Security",
+            "type": "row"
+        },
+        {
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 1
+            },
+            "id": 41,
+            "maxPerRow": 6,
+            "options": {
+                "fieldOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "defaults": {
+                        "mappings": [
+                            {
+                                "from": "",
+                                "id": 1,
+                                "operator": "",
+                                "text": "A",
+                                "to": "",
+                                "type": 1,
+                                "value": "1"
+                            },
+                            {
+                                "from": "",
+                                "id": 2,
+                                "operator": "",
+                                "text": "B",
+                                "to": "",
+                                "type": 1,
+                                "value": "2"
+                            },
+                            {
+                                "from": "",
+                                "id": 3,
+                                "operator": "",
+                                "text": "C",
+                                "to": "",
+                                "type": 1,
+                                "value": "3"
+                            },
+                            {
+                                "from": "",
+                                "id": 4,
+                                "operator": "",
+                                "text": "D",
+                                "to": "",
+                                "type": 1,
+                                "value": "4"
+                            },
+                            {
+                                "from": "",
+                                "id": 5,
+                                "operator": "",
+                                "text": "E",
+                                "to": "",
+                                "type": 1,
+                                "value": "5"
+                            }
+                        ],
+                        "max": 5,
+                        "min": 1,
+                        "thresholds": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EF843C",
+                                "value": 2
+                            },
+                            {
+                                "color": "#6ED0E0",
+                                "value": 3
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 4
+                            },
+                            {
+                                "color": "red",
+                                "value": 5
+                            }
+                        ],
+                        "title": "${__series.name}"
+                    },
+                    "override": {},
+                    "values": false
+                },
+                "orientation": "auto",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "6.4.3",
+            "repeat": "project",
+            "repeatDirection": "h",
+            "targets": [
+                {
+                    "expr": "sonar_reliability_rating{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Security Rating",
+            "type": "gauge"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 1,
+            "gridPos": {
+                "h": 6,
+                "w": 12,
+                "x": 12,
+                "y": 1
+            },
+            "id": 33,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_security_remediation_effort{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Security Remediation Effort",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 1,
+            "gridPos": {
+                "h": 6,
+                "w": 12,
+                "x": 0,
+                "y": 7
+            },
+            "id": 13,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_security_hotspots{key=~\"^$project$\"}",
+                    "interval": "",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Security Hostspots",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 13
+            },
+            "id": 23,
+            "panels": [],
+            "title": "Reliability",
+            "type": "row"
+        },
+        {
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 14
+            },
+            "id": 40,
+            "maxPerRow": 6,
+            "options": {
+                "fieldOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "defaults": {
+                        "mappings": [
+                            {
+                                "from": "",
+                                "id": 1,
+                                "operator": "",
+                                "text": "A",
+                                "to": "",
+                                "type": 1,
+                                "value": "1"
+                            },
+                            {
+                                "from": "",
+                                "id": 2,
+                                "operator": "",
+                                "text": "B",
+                                "to": "",
+                                "type": 1,
+                                "value": "2"
+                            },
+                            {
+                                "from": "",
+                                "id": 3,
+                                "operator": "",
+                                "text": "C",
+                                "to": "",
+                                "type": 1,
+                                "value": "3"
+                            },
+                            {
+                                "from": "",
+                                "id": 4,
+                                "operator": "",
+                                "text": "D",
+                                "to": "",
+                                "type": 1,
+                                "value": "4"
+                            },
+                            {
+                                "from": "",
+                                "id": 5,
+                                "operator": "",
+                                "text": "E",
+                                "to": "",
+                                "type": 1,
+                                "value": "5"
+                            }
+                        ],
+                        "max": 5,
+                        "min": 1,
+                        "thresholds": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EF843C",
+                                "value": 2
+                            },
+                            {
+                                "color": "#6ED0E0",
+                                "value": 3
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 4
+                            },
+                            {
+                                "color": "red",
+                                "value": 5
+                            }
+                        ],
+                        "title": "${__series.name}"
+                    },
+                    "override": {},
+                    "values": false
+                },
+                "orientation": "auto",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "6.4.3",
+            "repeat": "project",
+            "repeatDirection": "h",
+            "targets": [
+                {
+                    "expr": "sonar_reliability_rating{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Reliability Rating",
+            "type": "gauge"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 0,
+            "gridPos": {
+                "h": 6,
+                "w": 12,
+                "x": 12,
+                "y": 14
+            },
+            "id": 6,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_reliability_remediation_effort{key=~\"^$project$\"}",
+                    "interval": "",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Remediation Reliability Effort (Bugs)",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "m",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 1,
+            "gridPos": {
+                "h": 6,
+                "w": 12,
+                "x": 0,
+                "y": 20
+            },
+            "id": 4,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "repeat": null,
+            "repeatDirection": "h",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_bugs{key=~\"^$project$\"}",
+                    "interval": "",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Bugs",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 26
+            },
+            "id": 51,
+            "panels": [],
+            "title": "Code Smells",
+            "type": "row"
+        },
+        {
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 27
+            },
+            "id": 62,
+            "maxPerRow": 6,
+            "options": {
+                "fieldOptions": {
+                    "calcs": [
+                        "mean"
+                    ],
+                    "defaults": {
+                        "mappings": [
+                            {
+                                "from": "",
+                                "id": 1,
+                                "operator": "",
+                                "text": "A",
+                                "to": "",
+                                "type": 1,
+                                "value": "1"
+                            },
+                            {
+                                "from": "",
+                                "id": 2,
+                                "operator": "",
+                                "text": "B",
+                                "to": "",
+                                "type": 1,
+                                "value": "2"
+                            },
+                            {
+                                "from": "",
+                                "id": 3,
+                                "operator": "",
+                                "text": "C",
+                                "to": "",
+                                "type": 1,
+                                "value": "3"
+                            },
+                            {
+                                "from": "",
+                                "id": 4,
+                                "operator": "",
+                                "text": "D",
+                                "to": "",
+                                "type": 1,
+                                "value": "4"
+                            },
+                            {
+                                "from": "",
+                                "id": 5,
+                                "operator": "",
+                                "text": "E",
+                                "to": "",
+                                "type": 1,
+                                "value": "5"
+                            }
+                        ],
+                        "max": 5,
+                        "min": 1,
+                        "thresholds": [
+                            {
+                                "color": "green",
+                                "value": null
+                            },
+                            {
+                                "color": "#EF843C",
+                                "value": 2
+                            },
+                            {
+                                "color": "#6ED0E0",
+                                "value": 3
+                            },
+                            {
+                                "color": "#EAB839",
+                                "value": 4
+                            },
+                            {
+                                "color": "red",
+                                "value": 5
+                            }
+                        ],
+                        "title": "${__series.name}"
+                    },
+                    "override": {},
+                    "values": false
+                },
+                "orientation": "auto",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "6.4.3",
+            "repeat": "project",
+            "repeatDirection": "h",
+            "targets": [
+                {
+                    "expr": "sonar_sqale_rating{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Code Smells",
+            "type": "gauge"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 1,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 12,
+                "y": 27
+            },
+            "id": 88,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_sqale_index{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Maintainability Debt",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "m",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 1,
+            "gridPos": {
+                "h": 8,
+                "w": 12,
+                "x": 0,
+                "y": 33
+            },
+            "id": 57,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_code_smells{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Code Smells",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        },
+        {
+            "collapsed": false,
+            "datasource": null,
+            "gridPos": {
+                "h": 1,
+                "w": 24,
+                "x": 0,
+                "y": 41
+            },
+            "id": 90,
+            "panels": [],
+            "title": "Coverage",
+            "type": "row"
+        },
+        {
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "gridPos": {
+                "h": 6,
+                "w": 8,
+                "x": 0,
+                "y": 42
+            },
+            "id": 100,
+            "maxPerRow": 6,
+            "options": {
+                "fieldOptions": {
+                    "calcs": [
+                        "last"
+                    ],
+                    "defaults": {
+                        "mappings": [],
+                        "max": 100,
+                        "min": 0,
+                        "thresholds": [
+                            {
+                                "color": "red",
+                                "value": null
+                            },
+                            {
+                                "color": "orange",
+                                "value": 25
+                            },
+                            {
+                                "color": "yellow",
+                                "value": 50
+                            },
+                            {
+                                "color": "green",
+                                "value": 75
+                            }
+                        ],
+                        "title": "${__series.name}",
+                        "unit": "percent"
+                    },
+                    "override": {},
+                    "values": false
+                },
+                "orientation": "auto",
+                "showThresholdLabels": false,
+                "showThresholdMarkers": true
+            },
+            "pluginVersion": "6.4.3",
+            "repeat": "project",
+            "repeatDirection": "h",
+            "targets": [
+                {
+                    "expr": "sonar_line_coverage{key=~\"^$project$\"}",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "timeFrom": null,
+            "timeShift": null,
+            "title": "Line Coverage",
+            "type": "gauge"
+        },
+        {
+            "aliasColors": {},
+            "bars": false,
+            "dashLength": 10,
+            "dashes": false,
+            "datasource": "${DS_My-Prometheus-Datasource}",
+            "fill": 1,
+            "fillGradient": 1,
+            "gridPos": {
+                "h": 8,
+                "w": 24,
+                "x": 0,
+                "y": 48
+            },
+            "id": 92,
+            "legend": {
+                "avg": false,
+                "current": false,
+                "max": false,
+                "min": false,
+                "show": true,
+                "total": false,
+                "values": false
+            },
+            "lines": true,
+            "linewidth": 1,
+            "nullPointMode": "null",
+            "options": {
+                "dataLinks": []
+            },
+            "percentage": false,
+            "pointradius": 2,
+            "points": false,
+            "renderer": "flot",
+            "seriesOverrides": [],
+            "spaceLength": 10,
+            "stack": false,
+            "steppedLine": false,
+            "targets": [
+                {
+                    "expr": "sonar_lines_to_cover{key=~\"^$project\"}",
+                    "format": "time_series",
+                    "legendFormat": "{{key}}",
+                    "refId": "A"
+                }
+            ],
+            "thresholds": [],
+            "timeFrom": null,
+            "timeRegions": [],
+            "timeShift": null,
+            "title": "Lines to Cover",
+            "tooltip": {
+                "shared": true,
+                "sort": 0,
+                "value_type": "individual"
+            },
+            "type": "graph",
+            "xaxis": {
+                "buckets": null,
+                "mode": "time",
+                "name": null,
+                "show": true,
+                "values": []
+            },
+            "yaxes": [
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                },
+                {
+                    "format": "short",
+                    "label": null,
+                    "logBase": 1,
+                    "max": null,
+                    "min": null,
+                    "show": true
+                }
+            ],
+            "yaxis": {
+                "align": false,
+                "alignLevel": null
+            }
+        }
+    ],
+    "refresh": "15m",
+    "schemaVersion": 20,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+        "list": [
+            {
+                "allValue": ".*",
+                "current": {},
+                "datasource": "${DS_My-Prometheus-Datasource}",
+                "definition": "label_values(sonar_bugs, key)",
+                "hide": 0,
+                "includeAll": true,
+                "label": "Projects",
+                "multi": true,
+                "name": "project",
+                "options": [],
+                "query": "label_values(sonar_bugs, key)",
+                "refresh": 1,
+                "regex": "",
+                "skipUrlSync": false,
+                "sort": 1,
+                "tagValuesQuery": "",
+                "tags": [],
+                "tagsQuery": "",
+                "type": "query",
+                "useTags": false
+            }
+        ]
+    },
+    "time": {
+        "from": "now-1h",
+        "to": "now"
+    },
+    "timepicker": {
+        "refresh_intervals": [
+            "5s",
+            "10s",
+            "30s",
+            "1m",
+            "5m",
+            "15m",
+            "30m",
+            "1h",
+            "2h",
+            "1d"
+        ]
+    },
+    "timezone": "",
+    "title": "Sonarqube - Project",
+    "uid": "l5t1qH1Wk",
+    "version": 53
+}
