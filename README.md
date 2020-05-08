@@ -48,3 +48,9 @@ Within my reality, not all metrics were used, but some that made sense at the mo
 In this dashboard, projects are captured from the *sonar_bugs* metric and collecting the project key. You can view all metrics, only one or more than one.
 
 Import the *grafana_dashboard.json* file, changing the DataSource to your reality.
+
+### Dashboard screenshot
+
+Simple dashboard with the possibility to filter by projects. For each selected project, a Gauge graph will be added and the others with line graphs will have one more line with that value. You can select all projects.
+
+![Simple dashboard](dashboard_screenshot/simple_dashboard_project_filter.jpg)
