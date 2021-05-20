@@ -158,7 +158,7 @@ def get_all_projects_with_metrics():
             metrics_comma_separated = "{},{}".format(metric.key, metrics_comma_separated)
 
     for project in all_projects['components']:
-        p = Project(identifier=project['id'], key=project['key'])
+        p = Project(identifier=project['key'], key=project['key'])
         p.name = project['name']
         p.organization = project['organization']
         p.metrics = client.get_measures_component(component_key=p.key, metric_key=metrics_comma_separated)
