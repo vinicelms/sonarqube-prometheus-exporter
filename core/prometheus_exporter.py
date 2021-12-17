@@ -44,4 +44,4 @@ if __name__ == "__main__":
     prom.start_http_server(9120)
 
     while True:
-        time.sleep(2)
+        time.sleep(3)
