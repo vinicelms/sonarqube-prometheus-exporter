@@ -13,12 +13,13 @@ class CustomSonarExporter:
 
         for project in projects:
             for metric in project.metrics:
-                label_list = ['id', 'key']
+                label_list = ['id', 'key', 'name']
                 label_values = []
                 value_to_set = None
 
                 label_values.append(project.id)
                 label_values.append(project.key)
+                label_values.append(project.name)
                 for metric_value in metric.values:
                     if metric_value[0] == 'value':
                         value_to_set = metric_value[1]
