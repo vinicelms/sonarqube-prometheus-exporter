@@ -24,7 +24,14 @@ class SonarExporter:
         return self._request(endpoint='api/components/search?qualifiers=TRK')
 
     def get_all_metrics(self):
-        return self._request(endpoint='api/metrics/search')
+        response = self._request(endpoint='api/metrics/search')
+        metrics_list = response['metrics']
+        page_num = 1
+        while len(metrics_list) < response["total"]:
+            page_num += 1
+            response = self._request(endpoint=f'api/metrics/search?p={page_num}')
+            metrics_list.extend(response["metrics"])
+        return metrics_list
 
     def get_measures_component(self, component_key, metric_key):
         return self._request(endpoint="api/measures/component?component={}&metricKeys={}".format(component_key, metric_key))
@@ -141,7 +148,7 @@ def get_all_projects_with_metrics():
     all_projects = client.get_all_projects()
     all_metrics = client.get_all_metrics()
 
-    for metric in all_metrics['metrics']:
+    for metric in all_metrics:
         m = Metric()
         for item in CONF.supported_keys:
             if 'domain' in metric and metric['domain'] in item['domain']:
