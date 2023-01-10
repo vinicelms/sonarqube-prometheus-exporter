@@ -33,12 +33,18 @@ SUPPORTED_KEYS = [
         ]
     },
     {
+        "domain": "SecurityReview",
+        "keys": [
+            "security_hotspots",
+        ]
+    },
+    {
         "domain" : "Security",
         "keys" : [
-            "security_hotspots",
             "security_rating",
             "security_remediation_effort",
-            "security_review_rating"
+            "security_review_rating",
+            "vulnerabilities"
         ]
     },
     {
