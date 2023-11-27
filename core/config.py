@@ -82,7 +82,8 @@ SUPPORTED_KEYS = [
             "test_errors",
             "skipped_tests",
             "test_success_density",
-            "test_execution_time"
+            "test_execution_time",
+            "coverage"
         ]
     },
     {

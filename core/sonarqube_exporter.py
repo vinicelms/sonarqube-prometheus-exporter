@@ -21,7 +21,7 @@ class SonarExporter:
             return req.json()
 
     def get_all_projects(self):
-        return self._request(endpoint='api/components/search?qualifiers=TRK')
+        return self._request(endpoint='api/components/search?qualifiers=TRK&ps=500')
 
     def get_all_metrics(self):
         response = self._request(endpoint='api/metrics/search')
