@@ -6,6 +6,7 @@ class Config:
         self._sonar_url = os.environ['SONAR_URL']
         self._sonar_user = os.environ['SONAR_USER']
         self._sonar_password = os.environ['SONAR_PASSWORD']
+        self._sonar_components_page_index = os.getenv('SONAR_COMPONENTS_PAGE_INDEX','1')
 
     @property
     def sonar_url(self):
@@ -18,6 +19,10 @@ class Config:
     @property
     def sonar_password(self):
         return self._sonar_password
+
+    @property
+    def sonar_components_page_index(self):
+        return self._sonar_components_page_index
 
     @property
     def supported_keys(self):

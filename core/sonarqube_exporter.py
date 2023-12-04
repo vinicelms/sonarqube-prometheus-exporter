@@ -8,9 +8,10 @@ CONF = Config()
 
 class SonarExporter:
 
-    def __init__(self, user, password):
+    def __init__(self, user, password, sonar_components_page_index):
         self.user = user
         self.password = password
+        self.sonar_components_page_index = sonar_components_page_index
         self.base_url = CONF.sonar_url
 
     def _request(self, endpoint):
@@ -21,7 +22,7 @@ class SonarExporter:
             return req.json()
 
     def get_all_projects(self):
-        return self._request(endpoint='api/components/search?qualifiers=TRK&ps=500')
+        return self._request(endpoint='api/components/search?qualifiers=TRK&p={}'.format(self.sonar_components_page_index))
 
     def get_all_metrics(self):
         response = self._request(endpoint='api/metrics/search')
@@ -144,7 +145,7 @@ def get_all_projects_with_metrics():
     projects = []
     metrics = []
 
-    client = SonarExporter(CONF.sonar_user, CONF.sonar_password)
+    client = SonarExporter(CONF.sonar_user, CONF.sonar_password, CONF.sonar_components_page_index)
     all_projects = client.get_all_projects()
     all_metrics = client.get_all_metrics()
 
